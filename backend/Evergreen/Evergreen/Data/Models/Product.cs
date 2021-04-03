@@ -22,8 +22,6 @@ namespace Evergreen.Data.Models
 
         public decimal? DiscountedPrice { get; set; }
 
-        public ICollection<Rating> Ratings { get; set; }
-
         public int CategoryId { get; set; }
 
         public Category Category { get; set; }

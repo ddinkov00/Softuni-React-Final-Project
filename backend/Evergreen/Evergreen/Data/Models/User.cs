@@ -10,7 +10,6 @@ namespace Evergreen.Data.Models
         public User()
         {
             this.BoughtProducts = new HashSet<Product>();
-            this.Ratings = new HashSet<Rating>();
         }
 
         public int Id { get; set; }
@@ -24,7 +23,5 @@ namespace Evergreen.Data.Models
         public string Phone { get; set; }
 
         public ICollection<Product> BoughtProducts { get; set; }
-
-        public ICollection<Rating> Ratings { get; set; }
     }
 }

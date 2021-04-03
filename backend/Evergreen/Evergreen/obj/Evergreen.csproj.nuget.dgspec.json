@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Files\\Programming\\Softuni\\JS\\React\\Final Project\\Backend\\Evergreen\\Evergreen\\Evergreen.csproj": {}
+    "C:\\Files\\Programming\\Softuni\\JS\\React\\Final Project\\Softuni-React-Final-Project\\backend\\Evergreen\\Evergreen\\Evergreen.csproj": {}
   },
   "projects": {
-    "C:\\Files\\Programming\\Softuni\\JS\\React\\Final Project\\Backend\\Evergreen\\Evergreen\\Evergreen.csproj": {
+    "C:\\Files\\Programming\\Softuni\\JS\\React\\Final Project\\Softuni-React-Final-Project\\backend\\Evergreen\\Evergreen\\Evergreen.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Files\\Programming\\Softuni\\JS\\React\\Final Project\\Backend\\Evergreen\\Evergreen\\Evergreen.csproj",
+        "projectUniqueName": "C:\\Files\\Programming\\Softuni\\JS\\React\\Final Project\\Softuni-React-Final-Project\\backend\\Evergreen\\Evergreen\\Evergreen.csproj",
         "projectName": "Evergreen",
-        "projectPath": "C:\\Files\\Programming\\Softuni\\JS\\React\\Final Project\\Backend\\Evergreen\\Evergreen\\Evergreen.csproj",
+        "projectPath": "C:\\Files\\Programming\\Softuni\\JS\\React\\Final Project\\Softuni-React-Final-Project\\backend\\Evergreen\\Evergreen\\Evergreen.csproj",
         "packagesPath": "C:\\Users\\dimit\\.nuget\\packages\\",
-        "outputPath": "C:\\Files\\Programming\\Softuni\\JS\\React\\Final Project\\Backend\\Evergreen\\Evergreen\\obj\\",
+        "outputPath": "C:\\Files\\Programming\\Softuni\\JS\\React\\Final Project\\Softuni-React-Final-Project\\backend\\Evergreen\\Evergreen\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\dimit\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -40,6 +40,12 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[5.0.4, )"
+            },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
               "version": "[5.0.4, )"

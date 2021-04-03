@@ -10,14 +10,12 @@ namespace Evergreen.Data
     public class EvergreenContext : DbContext
     {
         public EvergreenContext()
-        {
-                
+        {   
         }
 
-        public EvergreenContext(DbContextOptions options)
+        public EvergreenContext(DbContextOptions<EvergreenContext> options)
             :base(options)
         {
-
         }
 
         public DbSet<Category> Categories { get; set; }
@@ -35,6 +33,17 @@ namespace Evergreen.Data
                 optionsBuilder
                     .UseSqlServer(Configuration.ConnectionString);
             }
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Product>()
+                .Property(p => p.OriginalPrice)
+                .HasColumnType("money");
+
+            modelBuilder.Entity<Product>()
+                .Property(p => p.DiscountedPrice)
+                .HasColumnType("money");
         }
     }
 }

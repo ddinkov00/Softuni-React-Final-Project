@@ -1,7 +1,11 @@
+using Evergreen.Data;
+using Evergreen.Services;
+using Evergreen.Services.Conracts;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -32,6 +36,12 @@ namespace Evergreen
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Evergreen", Version = "v1" });
             });
+
+            services.AddDbContext<EvergreenContext>(options => 
+                options.UseSqlServer(@"Server=(localdb)\MSSQLLocalDB;Database=Evergreen;Trusted_Connection=True"));
+
+            services.AddScoped<EvergreenContext>();
+            services.AddTransient<ICategoryService, CategoryService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
