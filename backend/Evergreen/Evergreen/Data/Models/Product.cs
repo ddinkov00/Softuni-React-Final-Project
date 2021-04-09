@@ -7,14 +7,11 @@ namespace Evergreen.Data.Models
 {
     public class Product
     {
-        public Product()
-        {
-            this.images = new HashSet<Image>();
-        }
-
         public int Id { get; set; }
 
         public string Name { get; set; }
+
+        public string ImageUrl { get; set; }
 
         public string Desciption { get; set; }
 
@@ -25,11 +22,5 @@ namespace Evergreen.Data.Models
         public int CategoryId { get; set; }
 
         public Category Category { get; set; }
-
-        public int SellerId { get; set; }
-
-        public User Seller { get; set; }
-
-        public ICollection<Image> images { get; set; }
     }
 }

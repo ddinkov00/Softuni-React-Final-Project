@@ -1,43 +1,75 @@
-import { Nav } from 'react-bootstrap'
-
 const Footer = () => {
-    return (
-        <>
-  <Nav className="justify-content-center" activeKey="/home">
-    <Nav.Item>
-      <Nav.Link href="/home">Active</Nav.Link>
-    </Nav.Item>
-    <Nav.Item>
-      <Nav.Link eventKey="link-1">Link</Nav.Link>
-    </Nav.Item>
-    <Nav.Item>
-      <Nav.Link eventKey="link-2">Link</Nav.Link>
-    </Nav.Item>
-    <Nav.Item>
-      <Nav.Link eventKey="disabled" disabled>
-        Disabled
-      </Nav.Link>
-    </Nav.Item>
-  </Nav>
-  <p className="text-center mt-4 mb-4">Or right-aligned</p>
-  <Nav className="justify-content-end" activeKey="/home">
-    <Nav.Item>
-      <Nav.Link href="/home">Active</Nav.Link>
-    </Nav.Item>
-    <Nav.Item>
-      <Nav.Link eventKey="link-1">Link</Nav.Link>
-    </Nav.Item>
-    <Nav.Item>
-      <Nav.Link eventKey="link-2">Link</Nav.Link>
-    </Nav.Item>
-    <Nav.Item>
-      <Nav.Link eventKey="disabled" disabled>
-        Disabled
-      </Nav.Link>
-    </Nav.Item>
-  </Nav>
-</>
-    )
+  return (
+    <footer className="bg-primary text-white text-center footer text-lg-start">
+      {/* <!-- Grid container --> */}
+      <div className="container p-4">
+        {/* <!--Grid row--> */}
+        <div className="row">
+          {/* <!--Grid column--> */}
+          <div className="col-lg-6 col-md-12 mb-4 mb-md-0">
+            <h5 className="text-uppercase">Footer Content</h5>
+
+            <p>
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste atque ea quis
+              molestias. Fugiat pariatur maxime quis culpa corporis vitae repudiandae aliquam
+              voluptatem veniam, est atque cumque eum delectus sint!
+            </p>
+          </div>
+          {/* <!--Grid column--> */}
+
+          {/* <!--Grid column--> */}
+          <div className="col-lg-3 col-md-6 mb-4 mb-md-0">
+            <h5 className="text-uppercase">Links</h5>
+
+            <ul className="list-unstyled mb-0">
+              <li>
+                <a href="#!" className="text-white">Link 1</a>
+              </li>
+              <li>
+                <a href="#!" className="text-white">Link 2</a>
+              </li>
+              <li>
+                <a href="#!" className="text-white">Link 3</a>
+              </li>
+              <li>
+                <a href="#!" className="text-white">Link 4</a>
+              </li>
+            </ul>
+          </div>
+          {/* <!--Grid column--> */}
+
+          {/* <!--Grid column--> */}
+          <div className="col-lg-3 col-md-6 mb-4 mb-md-0">
+            <h5 className="text-uppercase mb-0">Links</h5>
+
+            <ul className="list-unstyled">
+              <li>
+                <a href="#!" className="text-white">Link 1</a>
+              </li>
+              <li>
+                <a href="#!" className="text-white">Link 2</a>
+              </li>
+              <li>
+                <a href="#!" className="text-white">Link 3</a>
+              </li>
+              <li>
+                <a href="#!" className="text-white">Link 4</a>
+              </li>
+            </ul>
+          </div>
+          {/* <!--Grid column--> */}
+        </div>
+        {/* <!--Grid row--> */}
+      </div>
+      {/* <!-- Grid container --> */}
+
+      {/* <!-- Copyright --> */}
+      <div className="text-center p-3">
+        © 2020 Copyright: Evergreen
+      </div>
+      {/* <!-- Copyright --> */}
+    </footer>
+  )
 }
 
 export default Footer;

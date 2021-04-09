@@ -18,6 +18,16 @@ namespace Evergreen.Services
             this.context = context;
         }
 
+        public async Task<IEnumerable<AllCategoriesViewModel>> GetAll()
+        {
+            return await this.context.Categories
+                .Select(c => new AllCategoriesViewModel
+                {
+                    Name = c.Name,
+                    ImageUr = c.ImageUrl,
+                }).ToListAsync();
+        }
+
         public async Task<IEnumerable<CategoryForNavigationViewModel>> GetForNavigation()
         {
             return await this.context.Categories

@@ -7,11 +7,6 @@ namespace Evergreen.Data.Models
 {
     public class User
     {
-        public User()
-        {
-            this.BoughtProducts = new HashSet<Product>();
-        }
-
         public int Id { get; set; }
 
         public string Username { get; set; }
@@ -20,8 +15,14 @@ namespace Evergreen.Data.Models
 
         public string Password { get; set; }
 
+        public string ImageUrl { get; set; }
+
+        public string Token { get; set; }
+
         public string Phone { get; set; }
 
-        public ICollection<Product> BoughtProducts { get; set; }
+        public int RoleId { get; set; }
+
+        public Role Role { get; set; }
     }
 }

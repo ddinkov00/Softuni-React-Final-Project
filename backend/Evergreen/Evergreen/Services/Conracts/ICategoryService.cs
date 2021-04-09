@@ -9,5 +9,7 @@ namespace Evergreen.Services.Conracts
     public interface ICategoryService
     {
         public Task<IEnumerable<CategoryForNavigationViewModel>> GetForNavigation();
+
+        public Task<IEnumerable<AllCategoriesViewModel>> GetAll();
     }
 }

@@ -26,32 +26,15 @@ namespace Evergreen.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("ImageUrl")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
                     b.ToTable("Categories");
-                });
-
-            modelBuilder.Entity("Evergreen.Data.Models.Image", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("ProductId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Url")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ProductId");
-
-                    b.ToTable("Images");
                 });
 
             modelBuilder.Entity("Evergreen.Data.Models.Product", b =>
@@ -70,22 +53,35 @@ namespace Evergreen.Migrations
                     b.Property<decimal?>("DiscountedPrice")
                         .HasColumnType("money");
 
+                    b.Property<string>("ImageUrl")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("OriginalPrice")
                         .HasColumnType("money");
 
-                    b.Property<int>("SellerId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.HasIndex("CategoryId");
 
-                    b.HasIndex("SellerId");
-
                     b.ToTable("Products");
+                });
+
+            modelBuilder.Entity("Evergreen.Data.Models.Role", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Role");
                 });
 
             modelBuilder.Entity("Evergreen.Data.Models.User", b =>
@@ -98,10 +94,19 @@ namespace Evergreen.Migrations
                     b.Property<string>("Email")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("ImageUrl")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Password")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Phone")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("RoleId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Token")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Username")
@@ -109,18 +114,9 @@ namespace Evergreen.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("RoleId");
+
                     b.ToTable("Users");
-                });
-
-            modelBuilder.Entity("Evergreen.Data.Models.Image", b =>
-                {
-                    b.HasOne("Evergreen.Data.Models.Product", "Product")
-                        .WithMany("images")
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Product");
                 });
 
             modelBuilder.Entity("Evergreen.Data.Models.Product", b =>
@@ -131,15 +127,18 @@ namespace Evergreen.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Evergreen.Data.Models.User", "Seller")
-                        .WithMany("BoughtProducts")
-                        .HasForeignKey("SellerId")
+                    b.Navigation("Category");
+                });
+
+            modelBuilder.Entity("Evergreen.Data.Models.User", b =>
+                {
+                    b.HasOne("Evergreen.Data.Models.Role", "Role")
+                        .WithMany("Users")
+                        .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Category");
-
-                    b.Navigation("Seller");
+                    b.Navigation("Role");
                 });
 
             modelBuilder.Entity("Evergreen.Data.Models.Category", b =>
@@ -147,14 +146,9 @@ namespace Evergreen.Migrations
                     b.Navigation("Products");
                 });
 
-            modelBuilder.Entity("Evergreen.Data.Models.Product", b =>
+            modelBuilder.Entity("Evergreen.Data.Models.Role", b =>
                 {
-                    b.Navigation("images");
-                });
-
-            modelBuilder.Entity("Evergreen.Data.Models.User", b =>
-                {
-                    b.Navigation("BoughtProducts");
+                    b.Navigation("Users");
                 });
 #pragma warning restore 612, 618
         }
