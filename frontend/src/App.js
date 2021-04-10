@@ -7,7 +7,7 @@ import Login from './components/Identity/Login/index';
 import Register from './components/Identity/Register/index';
 import Home from './components/Home/index'
 import Categories from './components/Categories/index'
-import About from './components/About/index'
+import Contact from './components/Contact/index'
 
 function App() {
   return (
@@ -20,7 +20,7 @@ function App() {
         <Route path="/shop/categories/:categoryId" />
         <Route path="/login" component={ Login } />
         <Route path="/register" component={ Register } />
-        <Route path="/about" component={ About } />
+        <Route path="/contact" component={ Contact } />
       </Switch>
 
       <Footer />
