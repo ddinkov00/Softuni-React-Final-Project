@@ -31,3 +31,11 @@ export const GetById = (id) => {
     .then(res => res.json())
     .catch(err => err.json());
 }
+
+export const Search = (keyword) => {
+  const url = `https://localhost:44320/api/Product/search?keyword=${keyword}`;
+
+  return fetch(url)
+    .then(res => res.json())
+    .catch(err => err.json());
+}

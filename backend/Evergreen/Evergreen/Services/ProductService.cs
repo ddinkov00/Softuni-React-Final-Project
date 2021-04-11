@@ -64,5 +64,19 @@ namespace Evergreen.Services
                     CategoryName = p.Category.Name,
                 }).ToListAsync();
         }
+
+        public async Task<IEnumerable<ProductForListViewModel>> Search(string keyword)
+        {
+            return await this.context.Products
+                .Where(p => p.Name.Contains(keyword))
+                .Select(p => new ProductForListViewModel
+                {
+                    Id = p.Id,
+                    Name = p.Name,
+                    ImageUrl = p.ImageUrl,
+                    Price = p.OriginalPrice,
+                    CategoryName = p.Category.Name,
+                }).ToListAsync();
+        }
     }
 }

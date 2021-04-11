@@ -1,21 +1,37 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+
 
 const ProductInfo = (props) => {
-    const [quantity, setQuantity] = useState(1)
+    const originalPrice = props.originalPrice;
+
+    const [quantity, setQuantity] = useState(1);
+    const [totalPrice, setTotalPrice] = useState();
+    useEffect(() => {
+        setTotalPrice(originalPrice)   
+    }, [originalPrice])
 
     const incrementQuantityHandler = () => {
-
+        setQuantity(quantity + 1);
+        setTotalPrice(totalPrice + originalPrice);
     }
 
     const decreaseCuantityHandler = () => {
+        if (quantity === 1) {
+            return
+        }
+        setQuantity(quantity - 1);
+        setTotalPrice(totalPrice - originalPrice);
+    }
 
+    const addToCartHandler = () => {
+        
     }
 
     return (
         <div className="col-md-6">
             <h5>{props.name}</h5>
             <p className="mb-4 text-muted text-uppercase small">{props.categoryName}</p>
-            <p><span className="mr-1 h4"><strong>{(Math.round(props.price * 100) / 100).toFixed(2)} $.</strong></span></p>
+            <p><span className="mr-1 h4"><strong>Pric {(Math.round(props.originalPrice * 100) / 100).toFixed(2)} $.</strong></span></p>
 
             <hr />
 
@@ -31,9 +47,9 @@ const ProductInfo = (props) => {
 
             <hr />
 
-            <h5>Total price: <span id="totalSumField" className="text-primary h4">10.00 $</span></h5>
+            <h5>Total price: <span id="totalSumField" className="text-primary h4">{(Math.round(totalPrice * 100) / 100).toFixed(2)} $</span></h5>
 
-            <button type="button" id="shoppingCartBtn" className="btn-outline-dark btn btn-md mr-1 mb-2"><i className="icofont-shopping-cart">Add to Cart</i></button>
+            <button type="button" id="shoppingCartBtn" onClick={addToCartHandler} className="btn-outline-dark btn btn-md mr-1 mb-2"><i className="icofont-shopping-cart">Add to Cart</i></button>
         </div>
     )
 }

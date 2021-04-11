@@ -1,10 +1,13 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom'
+import { useHistory } from "react-router-dom";
 
 import * as categoryService from '../../services/categoryService'
 import { GetIdentityList, GetAdminElement } from '../../services/identityService'
 
 const Header = () => {
+    let history = useHistory();
+
     const [categories, setCategories] = useState([]);
     useEffect(() => {
         categoryService.getForNavigation()
@@ -44,6 +47,11 @@ const Header = () => {
         </li>
     )
 
+    const onSerchHandler = (e) => {
+        e.preventDefault();
+        history.push(`/search/${e.target.search.value}`);
+    }
+
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
             <div className="container">
@@ -77,8 +85,8 @@ const Header = () => {
                             </ul>
                         </li>
                     </ul>
-                    <form className="d-flex">
-                        <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+                    <form className="d-flex" onSubmit={onSerchHandler}>
+                        <input className="form-control me-2" type="search" name="search" placeholder="Search" aria-label="Search" />
                         <button className="btn btn-outline-success bg-white" type="submit">Search</button>
                     </form>
                 </div>

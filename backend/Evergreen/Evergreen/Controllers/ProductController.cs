@@ -34,6 +34,12 @@ namespace Evergreen.Controllers
             return await this.productService.GetById(id);
         }
 
+        [HttpGet("search")]
+        public async Task<IEnumerable<ProductForListViewModel>> Search(string keyword)
+        {
+            return await this.productService.Search(keyword);
+        }
+
         [HttpPost]
         public async Task<IActionResult> Post(CreateProductInputModel input)
         {

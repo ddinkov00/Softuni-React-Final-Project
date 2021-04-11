@@ -23,6 +23,7 @@ namespace Evergreen.Services
             return await this.context.Categories
                 .Select(c => new AllCategoriesViewModel
                 {
+                    Id = c.Id,
                     Name = c.Name,
                     ImageUr = c.ImageUrl,
                 }).ToListAsync();

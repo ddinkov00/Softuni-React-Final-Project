@@ -13,5 +13,7 @@ namespace Evergreen.Services.Conracts
         public Task<IEnumerable<ProductForListViewModel>> GetForList(int categoryId);
 
         public Task<ProductByIdViewModel> GetById(int id);
+
+        public Task<IEnumerable<ProductForListViewModel>> Search(string keyword);
     }
 }

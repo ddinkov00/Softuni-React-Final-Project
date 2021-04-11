@@ -11,6 +11,7 @@ import Contact from './components/Contact/index'
 import Admin from './components/Admin/index'
 import ProductsByCategory from './components/ProductsByCategory/index'
 import ProductById from './components/ProductById/index'
+import Search from './components/Search/index'
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
         <Route path="/contact" component={ Contact } />
         <Route path="/admin" component={ Admin } />
         <Route path="/product/:id" component={ ProductById } />
+        <Route path="/search/:keyword" component={ Search } />
       </Switch>
 
       <Footer />

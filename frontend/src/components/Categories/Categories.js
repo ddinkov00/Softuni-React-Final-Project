@@ -1,4 +1,4 @@
-import Title from './Title/index'
+import Title from './PageTitle/index'
 import Member from './Member/index'
 import * as categoryService from '../../services/categoryService'
 
@@ -12,7 +12,7 @@ const Categories = () => {
     }, []);
 
     const categoryItems = categories.map((c) => 
-        <Member key={c.name} name={c.name} imageUrl={c.imageUr} />
+        <Member key={c.name} name={c.name} imageUrl={c.imageUr} id={c.id} />
     );
 
     return (
