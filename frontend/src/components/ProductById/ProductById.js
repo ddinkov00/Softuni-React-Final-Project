@@ -4,8 +4,16 @@ import ProductDescription from "./ProductDescription/ProductDescription";
 import * as productService from '../../services/productService'
 import ProductImage from "./ProductImage.";
 import ProductInfo from "./ProductInfo/ProductInfo";
+import { useHistory } from 'react-router';
 
 const ProductById = ({ match }) => {
+    const history = useHistory()
+
+    const token = localStorage.getItem('token')
+    if (token === null) {
+        history.push('/login');
+    }
+
     const productId = match.params.id;
     const [product, setProduct] = useState([]);
     useEffect(() => {

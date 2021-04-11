@@ -26,5 +26,11 @@ namespace Evergreen.Controllers
             await this.contactService.MakeMessage(message);
             return this.Ok();
         }
+
+        [HttpGet]
+        public async Task<IEnumerable<MessageViewModel>> Get()
+        {
+            return await this.contactService.GetMessages();
+        }
     }
 }

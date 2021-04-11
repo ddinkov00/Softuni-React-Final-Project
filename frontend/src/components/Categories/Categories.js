@@ -3,8 +3,16 @@ import Member from './Member/index'
 import * as categoryService from '../../services/categoryService'
 
 import { useState, useEffect } from 'react';
+import { useHistory } from 'react-router';
 
 const Categories = () => {
+    const history = useHistory()
+
+    const token = localStorage.getItem('token')
+    if (token === null) {
+        history.push('/login');
+    }
+
     const [categories, setCategories] = useState([]);
     useEffect(() => {
         categoryService.GetAll()

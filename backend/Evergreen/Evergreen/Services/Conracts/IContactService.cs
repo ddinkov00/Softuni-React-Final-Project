@@ -9,5 +9,7 @@ namespace Evergreen.Services.Conracts
     public interface IContactService
     {
         public Task<bool> MakeMessage(ContactMessageInputModel message);
+
+        public Task<IEnumerable<MessageViewModel>> GetMessages();
     }
 }

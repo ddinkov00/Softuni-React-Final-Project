@@ -2,6 +2,7 @@
 using Evergreen.Data.Models;
 using Evergreen.Model;
 using Evergreen.Services.Conracts;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +17,17 @@ namespace Evergreen.Services
         public ContactService(EvergreenContext context)
         {
             this.context = context;
+        }
+
+        public async Task<IEnumerable<MessageViewModel>> GetMessages()
+        {
+            return await this.context.ContactMessages
+                .Select(m => new MessageViewModel
+                {
+                    Name = m.Name,
+                    Pone = m.Phone,
+                    Message = m.Message
+                }).ToListAsync();
         }
 
         public async Task<bool> MakeMessage(ContactMessageInputModel message)

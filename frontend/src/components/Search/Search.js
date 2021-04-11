@@ -2,9 +2,17 @@ import { useEffect, useState } from 'react'
 
 import Title from '../ProductsByCategory/Title/index'
 import Product from '../ProductsByCategory/Product/index'
+import { useHistory } from "react-router-dom";
 import * as productService from '../../services/productService'
 
 const Search = ({match}) => {
+    const history = useHistory()
+
+    const token = localStorage.getItem('token')
+    if (token === null) {
+        history.push('/login');
+    }
+    
     const keyword = match.params.keyword;
     
     const [products, setProducts] = useState([]);

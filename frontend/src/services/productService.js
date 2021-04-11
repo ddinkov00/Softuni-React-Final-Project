@@ -29,7 +29,7 @@ export const GetById = (id) => {
 
   return fetch(url)
     .then(res => res.json())
-    .catch(err => err.json());
+    .catch(err => err.toString());
 }
 
 export const Search = (keyword) => {

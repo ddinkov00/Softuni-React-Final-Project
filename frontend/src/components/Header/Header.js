@@ -25,7 +25,7 @@ const Header = () => {
             setToken(currentToken);
             setRole(currentRole);
         }
-    }, 500);
+    }, 50);
 
     const [identityList, setList] = useState();
     useEffect(() => {
@@ -39,13 +39,39 @@ const Header = () => {
         setElement(GetAdminElement(role));
     }, [role])
 
-    let categoryItems = categories.map((category) =>
-        <li key={category.id}>
-            <Link className="dropdown-item" to={`/shop/categories/${category.id}`}>
-                {category.name}
-            </Link>
-        </li>
-    )
+    const [IdentityList, setIdentityList] = useState();
+    useEffect(() => {
+        if (token !== null) {
+            let categoryItems = categories.map((category) =>
+                <li key={category.id}>
+                    <Link className="dropdown-item" to={`/shop/categories/${category.id}`}>
+                        {category.name}
+                    </Link>
+                </li>
+            )
+
+            setIdentityList(
+                <>
+                    <li className="nav-item">
+                        <Link className="nav-link" to="/shop">Shop</Link>
+                    </li>
+                    <li className="nav-item dropdown">
+                        <Link className="nav-link dropdown-toggle" to="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Categories
+                            </Link>
+                        <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+                            {categoryItems}
+                        </ul>
+                    </li>
+                    <li className="nav-item">
+                        <Link className="nav-link" to="/contact">Contact us</Link>
+                    </li>
+                </>
+            )
+        } else {
+            setIdentityList();
+        }
+    }, [token, categories])
 
     const onSerchHandler = (e) => {
         e.preventDefault();
@@ -61,27 +87,14 @@ const Header = () => {
                 </button>
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li className="nav-item">
-                            <Link className="nav-link" to="/shop">Shop</Link>
-                        </li>
-                        <li className="nav-item dropdown">
-                            <Link className="nav-link dropdown-toggle" to="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Categories
-                            </Link>
-                            <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                {categoryItems}
-                            </ul>
-                        </li>
-                        <li className="nav-item">
-                            <Link className="nav-link" to="/contact">Contact us</Link>
-                        </li>
+                        {IdentityList}
                         <li className="nav-item dropdown">
                             <Link className="nav-link dropdown-toggle" to="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 User
                             </Link>
                             <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                { identityList }
-                                { adminElement }
+                                {identityList}
+                                {adminElement}
                             </ul>
                         </li>
                     </ul>

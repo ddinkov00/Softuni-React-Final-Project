@@ -45,18 +45,13 @@ export const GetIdentityList = (token) => {
         );
     } else {
         return (
-        <>
-            <li>
-                <Link className="dropdown-item" to='/profile'>
-                    Profile
-                </Link>
-            </li>
-            <li>
-                <Link className="dropdown-item" to='/login' onClick={ logout }>
-                    Logout
-                </Link>
-            </li>
-        </>
+            <>
+                <li>
+                    <Link className="dropdown-item" to='/login' onClick={logout}>
+                        Logout
+                    </Link>
+                </li>
+            </>
         );
     }
 }
@@ -73,4 +68,12 @@ export const GetAdminElement = (role) => {
             </>
         )
     }
+}
+
+export const GetAll = () => {
+    const url = 'https://localhost:44320/api/Contact';
+
+    return fetch(url)
+        .then(res => res.json())
+        .catch(err => err.json());
 }
