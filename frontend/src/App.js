@@ -8,6 +8,9 @@ import Register from './components/Identity/Register/index';
 import Home from './components/Home/index'
 import Categories from './components/Categories/index'
 import Contact from './components/Contact/index'
+import Admin from './components/Admin/index'
+import ProductsByCategory from './components/ProductsByCategory/index'
+import ProductById from './components/ProductById/index'
 
 function App() {
   return (
@@ -17,10 +20,12 @@ function App() {
       <Switch>
         <Route path="/" exact component={ Home } />
         <Route path="/shop" exact component={ Categories } />
-        <Route path="/shop/categories/:categoryId" />
+        <Route path="/shop/categories/:categoryId" component={ ProductsByCategory } />
         <Route path="/login" component={ Login } />
         <Route path="/register" component={ Register } />
         <Route path="/contact" component={ Contact } />
+        <Route path="/admin" component={ Admin } />
+        <Route path="/product/:id" component={ ProductById } />
       </Switch>
 
       <Footer />

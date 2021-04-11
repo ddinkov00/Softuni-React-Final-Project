@@ -14,6 +14,7 @@ const Form = () => {
             title: e.target.title.value,
             message: e.target.message.value,
         }
+        
         const res = await contactService.sendMessage(data);
 
         if (res.ok) {
@@ -27,25 +28,21 @@ const Form = () => {
                 <div className="row">
                     <div className="col-md-6 mb-3">
                         <div className="form-group">
-                            <span className="text-danger"></span>
                             <input type="text" name="name" className="form-control form-control-lg form-control-a" placeholder="Name" />
                         </div>
                     </div>
                     <div className="col-md-6 mb-3">
                         <div className="form-group">
-                            <span className="text-danger"></span>
                             <input type="text" name="phone" className="form-control form-control-lg form-control-a" placeholder="Phone" />
                         </div>
                     </div>
                     <div className="col-md-12 mb-3">
                         <div className="form-group">
-                            <span className="text-danger"></span>
                             <input type="text" name="title" className="form-control form-control-lg form-control-a" placeholder="Title" />
                         </div>
                     </div>
                     <div className="col-md-12">
                         <div className="form-group">
-                            <span className="text-danger"></span>
                             <textarea className="form-control" name="message" cols="45" rows="8" placeholder="Message"></textarea>
                         </div>
                     </div>

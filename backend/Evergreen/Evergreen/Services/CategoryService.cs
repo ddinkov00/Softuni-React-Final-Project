@@ -28,6 +28,14 @@ namespace Evergreen.Services
                 }).ToListAsync();
         }
 
+        public async Task<string> GetCategoryName(int id)
+        {
+            var category = await this.context.Categories
+                .FirstOrDefaultAsync(c => c.Id == id);
+
+            return category.Name;
+        }
+
         public async Task<IEnumerable<CategoryForNavigationViewModel>> GetForNavigation()
         {
             return await this.context.Categories

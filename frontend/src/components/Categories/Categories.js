@@ -12,7 +12,7 @@ const Categories = () => {
     }, []);
 
     const categoryItems = categories.map((c) => 
-        <Member name={c.name} imageUrl={c.imageUr} />
+        <Member key={c.name} name={c.name} imageUrl={c.imageUr} />
     );
 
     return (

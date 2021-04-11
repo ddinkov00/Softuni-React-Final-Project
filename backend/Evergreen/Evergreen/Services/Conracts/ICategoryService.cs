@@ -11,5 +11,7 @@ namespace Evergreen.Services.Conracts
         public Task<IEnumerable<CategoryForNavigationViewModel>> GetForNavigation();
 
         public Task<IEnumerable<AllCategoriesViewModel>> GetAll();
+
+        public Task<string> GetCategoryName(int id);
     }
 }

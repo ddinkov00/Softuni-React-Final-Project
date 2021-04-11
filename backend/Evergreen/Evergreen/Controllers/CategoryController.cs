@@ -21,6 +21,12 @@ namespace Evergreen.Controllers
             this.categoryService = categoryService;
         }
 
+        [HttpGet("getName")]
+        public async Task<string> GetName(int id)
+        {
+            return await this.categoryService.GetCategoryName(id);
+        }
+
         [HttpGet]
         public async Task<IEnumerable<CategoryForNavigationViewModel>> GetForNavigation()
         {

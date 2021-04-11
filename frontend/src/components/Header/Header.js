@@ -37,8 +37,8 @@ const Header = () => {
     }, [role])
 
     let categoryItems = categories.map((category) =>
-        <li>
-            <Link className="dropdown-item" key={category.id} to={`/shop/categories/${category.id}`}>
+        <li key={category.id}>
+            <Link className="dropdown-item" to={`/shop/categories/${category.id}`}>
                 {category.name}
             </Link>
         </li>
