@@ -6,7 +6,7 @@ import ErrorPage from '../ErrorPage/index'
 const Admin = () => {
     const role = localStorage.getItem('roleId')
     console.log(role);
-    if (Number(role) === 2) {
+    if (Number(role) === 2 || role == null) {
         return (
             <ErrorPage />
         )

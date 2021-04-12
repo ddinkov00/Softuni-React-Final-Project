@@ -31,7 +31,7 @@ const ProductInfo = (props) => {
         <div className="col-md-6">
             <h5>{props.name}</h5>
             <p className="mb-4 text-muted text-uppercase small">{props.categoryName}</p>
-            <p><span className="mr-1 h4"><strong>Pric {(Math.round(props.originalPrice * 100) / 100).toFixed(2)} $.</strong></span></p>
+            <p><span className="mr-1 h4"><strong>Price: {(Math.round(props.originalPrice * 100) / 100).toFixed(2)} $.</strong></span></p>
 
             <hr />
 
