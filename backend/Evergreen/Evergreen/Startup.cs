@@ -79,6 +79,10 @@ namespace Evergreen
             {
                 endpoints.MapControllers();
             });
+            
+            var context = new EvergreenContext();
+            context.Database.EnsureDeleted();
+            context.Database.EnsureCreated();
         }
     }
 }
